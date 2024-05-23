@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <!-- Boostrap CSS CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-md my-5">
+        <div class="card">
+            <div class="card-header">
+                Random Quote Generator
+            </div>
+            <div id="quote-box" class="card-body nx-auto">
+                <h5 id="text" class="card-title"></h5>
+                <p id="author" class="card-text"></p>
+                <a id="new-quote" href="#" class="btn btn-success">New Quote</a>
+                <a id="tweet-quote" href="twitter.com/intent/tweet" class="btn btn-info">Tweet Quote</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap JS CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <!-- import quotes object -->
+    <script src="quotes.js"></script>
+    <script src="main.js"></script>
+
+    <!-- FreeCodeCamp Test Environment CDN -->
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+
+</html>
