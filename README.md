@@ -8,3 +8,6 @@ https://jamiehitchcock.github.io/FCC_FE-Lib_Projects/Random_Quote_Generator/
 
 Markdown Previewer using Bootstrap:
 https://jamiehitchcock.github.io/FCC_FE-Lib_Projects/Markdown_Previewer/
+
+Drum Machine using Bootstrap:
+https://jamiehitchcock.github.io/FCC_FE-Lib_Projects/Drum_Machine/
