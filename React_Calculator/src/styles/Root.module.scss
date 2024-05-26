@@ -1,0 +1,14 @@
+@import "./Variables.scss";
+
+.container{
+    padding: 1.5rem;
+    margin: 0 auto;
+}
+h1{
+    color: $primary;
+    background-color: $background;
+}
+.calculator{
+    background-color: $background;
+    color: $darkgrey;
+}
