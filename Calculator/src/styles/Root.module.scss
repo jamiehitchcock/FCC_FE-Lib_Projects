@@ -1,7 +1,7 @@
 @import "./Variables.scss";
 
 .container{
-    padding: 1.5rem;
+    // padding: 1.5rem;
 }
 
 .calculator{
@@ -42,6 +42,7 @@
         border: 2px solid black;
         outline: none;
         background-color: $button-background;
+        text-align: -webkit-center;
 
         &:hover, &:focus{
             background-color: $button-background-hover;
@@ -50,6 +51,7 @@
         &.ac{
             background-color: $ac-button-background;
             color: white;
+            font-size: 1.6rem;
 
             &:hover, &:focus{
                 background-color: $ac-button-background-hover;
@@ -59,6 +61,7 @@
         &.del{
             background-color: $del-button-background;
             color: white;
+            font-size: 1.6rem;
 
             &:hover, &:focus{
                 background-color: $del-button-background-hover;
@@ -68,6 +71,7 @@
         &.equals{
             background-color: $equals-button-background;
             color: white;
+            font-size: 3rem;
 
             &:hover, &:focus{
                 background-color: $equals-button-background-hover;

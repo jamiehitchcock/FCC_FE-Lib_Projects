@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 import DigitButton from './DigitButton';
 import OperationButton from './OperationButton';
 import classes from './styles/Root.module.scss';
@@ -204,6 +204,73 @@ function App() {
     operation: null,
     minusNext: null,
   });
+
+  // keyboard functionality that listens to key press and clicks the relevant button
+  useEffect(() => {
+    function handleKeyDown(e) {
+      // console.log(e.key);
+
+      switch (e.key) {
+        case "1":
+          document.getElementById("one").click();
+          break
+        case "2":
+          document.getElementById("two").click();
+          break
+        case "3":
+          document.getElementById("three").click();
+          break
+        case "4":
+          document.getElementById("four").click();
+          break
+        case "5":
+          document.getElementById("five").click();
+          break
+        case "6":
+          document.getElementById("six").click();
+          break
+        case "7":
+          document.getElementById("seven").click();
+          break
+        case "8":
+          document.getElementById("eight").click();
+          break
+        case "9":
+          document.getElementById("nine").click();
+          break
+        case "0":
+          document.getElementById("zero").click();
+          break
+        case "+":
+          document.getElementById("add").click();
+          break
+        case "-":
+          document.getElementById("subtract").click();
+          break
+        case "*":
+          document.getElementById("multiply").click();
+          break
+        case "/":
+          document.getElementById("divide").click();
+          break
+        case "Enter":
+          document.getElementById("equals").click();
+          break
+        case "Backspace":
+          document.getElementById("del").click();
+          break
+        case "Delete":
+          document.getElementById("clear").click();
+          break
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <>
