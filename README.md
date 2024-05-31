@@ -13,4 +13,7 @@ Drum Machine using Bootstrap:
 https://jamiehitchcock.github.io/FCC_FE-Lib_Projects/Drum_Machine/
 
 Calculator using React:
-https://radiant-kulfi-fb6d4e.netlify.app/
+https://react-calculator-jh.netlify.app/
+
+Pomodoro Timer using React:
+https://react-pomodoro-timer-jh.netlify.app/
