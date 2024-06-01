@@ -1,6 +1,12 @@
 import { useContext, useState, useEffect, useRef } from "react";
 import SettingsContext from "./SettingsContext";
 
+// import react-circular progressbar from - https://www.npmjs.com/package/react-circular-progressbar
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
+import classes from './styles/Timer.module.scss'
+
 function Timer() {
 
     // context
@@ -139,32 +145,47 @@ function Timer() {
     console.log(mode);
     console.log(secondsRemaining);
 
+    const percentage = 66;
+
+    // have progress bar percentage change with percentage of time 
+    // style progress bar pathColor against mode
+
     return (
         <>
-            <div className="break">
-                <div id="break-label">Break Length</div>
-                <div id="break-length">{settingsInfo.breakMins}</div>
-                <div>
-                    <button id="break-decrement" onClick={handleBreakDecrement}>-</button>
-                    <button id="break-increment" onClick={handleBreakIncrement}>+</button>
-                </div>
+            <h1 id="timer-label">{formatLabel()}</h1>
+
+            <div className={classes.progressContainer} id="time-left">
+                    <CircularProgressbar value={percentage} text={formatTimer()} styles={buildStyles({ textColor: 'rgb(107, 22, 187)', pathColor: 'rgb(107, 22, 187)' })} />
             </div>
 
-            <div className="session">
-                <div id="session-label">Session Length</div>
-                <div id="session-length">{settingsInfo.sessionMins}</div>
-                <div>
-                    <button id="session-decrement" onClick={handleSessionDecrement}>-</button>
-                    <button id="session-increment" onClick={handleSessionIncrement}>+</button>
-                </div>
-            </div>
-
-            <div className="timer">
-                <div id="timer-label">{formatLabel()}</div>
-                <div id="time-left">{formatTimer()}</div>
+            <div className={classes.controls}>
                 <button id="start_stop" onClick={handleStopStart}>{isRunning ? "Stop" : "Start"}</button>
                 <button id="reset" onClick={handleRestart}>Reset</button>
             </div>
+
+
+            <div className={classes.settings}>
+
+                <div className={classes.settings__session}>
+                    <div id="session-label">Session Length</div>
+                    <div id="session-length">{settingsInfo.sessionMins}</div>
+                    <div>
+                        <button id="session-decrement" onClick={handleSessionDecrement}>-</button>
+                        <button id="session-increment" onClick={handleSessionIncrement}>+</button>
+                    </div>
+                </div>
+
+                <div className={classes.settings__break}>
+                    <div id="break-label">Break Length</div>
+                    <div id="break-length">{settingsInfo.breakMins}</div>
+                    <div>
+                        <button id="break-decrement" onClick={handleBreakDecrement}>-</button>
+                        <button id="break-increment" onClick={handleBreakIncrement}>+</button>
+                    </div>
+                </div>
+
+            </div>
+
             <audio src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/BeepSound.wav" id='beep'></audio>
         </>
     )
