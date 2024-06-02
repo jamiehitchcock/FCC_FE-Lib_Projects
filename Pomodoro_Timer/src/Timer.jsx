@@ -22,8 +22,11 @@ function Timer() {
     const modeRef = useRef(mode);
     const secondsRemainingRef = useRef(secondsRemaining);
 
-    // const totalSeconds = (mode === 'session' ? settingsInfo.sessionMins : settingsInfo.breakMins) * 60;
+    // progressbar calculations
+    const totalSeconds = (mode === 'session' ? settingsInfo.sessionMins : settingsInfo.breakMins) * 60;
+    const percentage = Math.round(secondsRemaining / totalSeconds * 100);
 
+    // timer display
     const minutes = Math.floor(secondsRemaining / 60);
     let seconds = secondsRemaining % 60;
 
@@ -118,16 +121,17 @@ function Timer() {
         // change mode back to default
         modeRef.current = 'session';
         setMode(modeRef.current);
-
-        // change settings to pass FCC Test
-        settingsInfo.sessionMins = 25;
-        settingsInfo.breakMins = 5;
         initTimer();
         stopAudio();
     }
 
     function formatLabel() {
-        return modeRef.current === 'session' ? 'Focus Time Remaining' : 'Break Time Remaining';
+        if (modeRef.current === 'session') {
+            return (<h1 id="timer-label" className={classes.session}>Focus Time Remaining</h1>)
+        }
+        else {
+            return (<h1 id="timer-label" className={classes.break}>Break Time Remaining</h1>)
+        }
     }
 
     function playBeep() {
@@ -145,17 +149,15 @@ function Timer() {
     console.log(mode);
     console.log(secondsRemaining);
 
-    const percentage = 66;
-
-    // have progress bar percentage change with percentage of time 
-    // style progress bar pathColor against mode
-
     return (
         <>
-            <h1 id="timer-label">{formatLabel()}</h1>
+            {formatLabel()}
 
             <div className={classes.progressContainer} id="time-left">
-                    <CircularProgressbar value={percentage} text={formatTimer()} styles={buildStyles({ textColor: 'rgb(107, 22, 187)', pathColor: 'rgb(107, 22, 187)' })} />
+                <CircularProgressbar value={percentage} text={formatTimer()} styles={buildStyles({
+                    textColor: mode === 'session' ? 'rgb(107, 22, 187)' : 'rgb(223 130 34)',
+                    pathColor: mode === 'session' ? 'rgb(107, 22, 187)' : 'rgb(223 130 34)'
+                })} />
             </div>
 
             <div className={classes.controls}>
@@ -167,18 +169,18 @@ function Timer() {
             <div className={classes.settings}>
 
                 <div className={classes.settings__session}>
-                    <div id="session-label">Session Length</div>
-                    <div id="session-length">{settingsInfo.sessionMins}</div>
-                    <div>
+                    <div id="session-label" className={classes.settings__session__label}>Session Length</div>
+                    <div id="session-length" className={classes.settings__session__length}>{settingsInfo.sessionMins}</div>
+                    <div className={classes.settings__session__buttons}>
                         <button id="session-decrement" onClick={handleSessionDecrement}>-</button>
                         <button id="session-increment" onClick={handleSessionIncrement}>+</button>
                     </div>
                 </div>
 
                 <div className={classes.settings__break}>
-                    <div id="break-label">Break Length</div>
-                    <div id="break-length">{settingsInfo.breakMins}</div>
-                    <div>
+                    <div id="break-label" className={classes.settings__break__label}>Break Length</div>
+                    <div id="break-length" className={classes.settings__break__length}>{settingsInfo.breakMins}</div>
+                    <div className={classes.settings__break__buttons}>
                         <button id="break-decrement" onClick={handleBreakDecrement}>-</button>
                         <button id="break-increment" onClick={handleBreakIncrement}>+</button>
                     </div>
